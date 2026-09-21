@@ -133,7 +133,7 @@
             <i id="musicIcon" class="fa-solid fa-music text-sm animate-spin-slow"></i>
         </button>
     </div>
-    <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-piano-112199.mp3"></audio>
+    <audio id="bgAudio" loop src="https://files.catbox.moe/gtrn40.mp3"></audio>
 
     <!-- MAIN INVITATION SCROLL CONTAINER -->
     <main id="mainContent" class="opacity-0 transition-opacity duration-1000 max-w-md mx-auto relative bg-studioBg min-h-screen shadow-2xl overflow-hidden">
@@ -148,7 +148,7 @@
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white tracking-wide">
                     Ndit & Gery
                 </h2>
-                <p class="text-xs uppercase tracking-widest text-sandText font-semibold">06 Maret 2027</p>
+                <p class="text-xs uppercase tracking-widest text-sandText font-semibold">13 Maret 2027</p>
             </div>
 
             <div class="relative z-10 pb-8 text-center animate-bounce-subtle">
@@ -233,7 +233,7 @@
                         <strong class="font-semibold text-white">Pertunangan</strong> - Atas izin Allah, niat baik kami akhirnya berlanjut pada sebuah acara lamaran yang penuh doa dan kebahagiaan.
                     </p>
                     <p>
-                        <strong class="font-semibold text-white">Menuju Pernikahan</strong> - Pada 06 Maret 2027, kami akan mengikrarkan janji suci pernikahan. Percayalah, bukan karena bertemu lalu berjodoh, melainkan karena berjodohlah maka kami dipertemukan.
+                        <strong class="font-semibold text-white">Menuju Pernikahan</strong> - Pada 13 Maret 2027, kami akan mengikrarkan janji suci pernikahan. Percayalah, bukan karena bertemu lalu berjodoh, melainkan karena berjodohlah maka kami dipertemukan.
                     </p>
                 </div>
             </div>
@@ -280,7 +280,7 @@
                 <!-- Akad Nikah -->
                 <div class="space-y-2">
                     <h3 class="font-serif text-3xl font-bold text-white">Akad Nikah</h3>
-                    <p class="text-xs text-sandText">Sabtu, 06 Maret 2027</p>
+                    <p class="text-xs text-sandText">Sabtu, 13 Maret 2027</p>
                     <p class="text-xs text-sandText">09.00 WIB - Selesai</p>
                     
                     <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
@@ -299,13 +299,13 @@
                 <!-- Resepsi -->
                 <div class="space-y-2 pt-4">
                     <h3 class="font-serif text-3xl font-bold text-white">Resepsi</h3>
-                    <p class="text-xs text-sandText">Sabtu, 06 Maret 2027</p>
+                    <p class="text-xs text-sandText">Sabtu, 13 Maret 2027</p>
                     <p class="text-xs text-sandText">10.00 WIB - Selesai</p>
                     
                     <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
                         <i class="fa-solid fa-location-dot mb-1 block text-base text-accentGold"></i>
                         <strong class="not-italic text-white font-semibold">KEDIAMAN MEMPELAI WANITA</strong><br>
-                        Dusun Babakan, RT 04/ RW 03, Des Sadewata, Kec Lumbung, Kab Ciamis, Jawa Barat
+                        Dusun Nusasireum, RT 031/ RW 010, Des Cibeureum, Kec Sukamantri, Kab Ciamis, Jawa Barat
                     </div>
 
                     <div class="pt-2">
@@ -519,7 +519,7 @@
         ];
 
         function renderWishes() {
-            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_sherly')) || initialWishes;
+            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_ndit')) || initialWishes;
             const container = document.getElementById('wishesContainer');
             container.innerHTML = '';
 
@@ -544,7 +544,7 @@
             const wishes = JSON.parse(localStorage.getItem('wedding_wishes_sherly')) || initialWishes;
             wishes.unshift({ name, wish });
 
-            localStorage.setItem('wedding_wishes_sherly', JSON.stringify(wishes));
+            localStorage.setItem('wedding_wishes_ndit', JSON.stringify(wishes));
             renderWishes();
 
             document.getElementById('inputName').value = '';
