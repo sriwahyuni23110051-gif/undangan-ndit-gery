@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Ndit & Gery</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond, Alex Brush (Script), & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        studioBg: '#5A5551',
+                        studioCard: '#4B4643',
+                        warmGrey: '#3D3835',
+                        sandText: '#E6E1DC',
+                        accentGold: '#D4B382',
+                        mutedCream: '#F2EFE9',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Alex Brush"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                    },
+                    keyframes: {
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-6px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Warm Studio Aesthetic */
+        body {
+            background-color: #5A5551;
+            color: #F2EFE9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .photo-overlay {
+            background: linear-gradient(to bottom, rgba(30, 28, 27, 0.45) 0%, rgba(20, 19, 18, 0.75) 100%);
+        }
+
+        .photo-overlay-top {
+            background: linear-gradient(to top, rgba(30, 28, 27, 0.7) 0%, rgba(20, 19, 18, 0.4) 100%);
+        }
+
+        .photo-overlay-radial {
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%);
+        }
+
+        /* Frosted Glass UI Card */
+        .glass-studio {
+            background: rgba(45, 41, 39, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(230, 225, 220, 0.15);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #3D3835;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8C847D;
+            border-radius: 3px;
+        }
+
+        body.locked {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="locked relative selection:bg-accentGold selection:text-studioBg">
+
+    <!-- 1. FULLSCREEN COVER OVERLAY -->
+    <div id="coverOverlay" class="fixed inset-0 z-50 flex items-center justify-center transition-all duration-1000 ease-in-out bg-studioBg">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-74bd3e7d-8fa9-45f4-84a4-611908b5b18b.jpg');">
+        </div>
+        <div class="absolute inset-0 photo-overlay"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-lg w-full flex flex-col justify-between h-full py-16 sm:py-20">
+            <div></div>
+
+            <div class="space-y-4">
+                <p class="font-script text-3xl sm:text-4xl text-sandText drop-shadow-md">The Wedding of</p>
+                <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-wide text-white drop-shadow-lg">
+                    Ndit & Gery
+                </h1>
+            </div>
+
+            <div class="space-y-6">
+                <div class="space-y-1">
+                    <p class="text-xs uppercase tracking-widest text-sandText opacity-80">Dear</p>
+                    <h3 id="guestNameDisplay" class="font-serif text-2xl font-semibold text-white tracking-wider">
+                        Sri Wahyuni
+                    </h3>
+                </div>
+
+                <button onclick="openInvitation()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white text-xs tracking-wider uppercase font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fa-regular fa-envelope text-sm"></i>
+                    Open Invitation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. FLOATING MUSIC CONTROL BUTTON -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button id="musicToggle" onclick="toggleAudio()" class="w-11 h-11 rounded-full bg-studioCard/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all">
+            <i id="musicIcon" class="fa-solid fa-music text-sm animate-spin-slow"></i>
+        </button>
+    </div>
+    <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-piano-112199.mp3"></audio>
+
+    <!-- MAIN INVITATION SCROLL CONTAINER -->
+    <main id="mainContent" class="opacity-0 transition-opacity duration-1000 max-w-md mx-auto relative bg-studioBg min-h-screen shadow-2xl overflow-hidden">
+
+        <!-- SECTION 1: HERO COVER -->
+        <section class="relative h-screen flex flex-col justify-between text-center p-8 bg-cover bg-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-ff838649-42db-45c7-9b4b-ebb86f7bdd53.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <div class="relative z-10 pt-16 space-y-3">
+                <p class="font-script text-3xl text-sandText">The Wedding of</p>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white tracking-wide">
+                    Ndit & Gery
+                </h2>
+                <p class="text-xs uppercase tracking-widest text-sandText font-semibold">06 Maret 2027</p>
+            </div>
+
+            <div class="relative z-10 pb-8 text-center animate-bounce-subtle">
+                <i class="fa-solid fa-chevron-down text-white/60 text-lg"></i>
+            </div>
+        </section>
+
+        <!-- SECTION 2: QURAN VERSE -->
+        <section class="relative min-h-[80vh] flex flex-col justify-center items-center text-center p-8 bg-cover bg-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
+            <div class="absolute inset-0 photo-overlay-radial"></div>
+
+            <div class="relative z-10 space-y-6 max-w-xs mx-auto">
+                <p class="text-xs sm:text-sm text-sandText leading-relaxed font-light tracking-wide italic">
+                    "Dan diantara ayat-ayat-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu merasa nyaman kepadanya, dan dijadikan-Nya di antaramu mawadah dan rahmah. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
+                </p>
+                <h3 class="font-script text-4xl text-white font-normal">
+                    QS. Ar-Rum: 21
+                </h3>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE BRIDE -->
+        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-cover bg-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-597ae051-8546-419a-aceb-d2cae8da5a59.jpg');">
+            <div class="absolute inset-0 photo-overlay-top"></div>
+
+            <div class="relative z-10 space-y-3 mb-8">
+                <p class="font-script text-3xl text-sandText">The Bride</p>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                    Indriyani
+                </h3>
+                <p class="text-xs text-sandText/90 font-light leading-relaxed">
+                    Putri Pertama dari<br>
+                    Bapak Dodi & Ibu Maya Sari
+                </p>
+                <div class="pt-2">
+                    <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>indriyanii_14</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE GROOM -->
+        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-cover bg-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-71e183ed-b1b7-4118-9204-54b614508210.jpg');">
+            <div class="absolute inset-0 photo-overlay-top"></div>
+
+            <div class="relative z-10 space-y-3 mb-8">
+                <p class="font-script text-3xl text-sandText">The Groom</p>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                    Gery Mardiana
+                </h3>
+                <p class="text-xs text-sandText/90 font-light leading-relaxed">
+                    Putra Kedua dari<br>
+                    Bapak Ujang & Ibu Sari
+                </p>
+                <div class="pt-2">
+                    <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>grymardiana_</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LOVE STORY -->
+        <section class="relative min-h-[90vh] flex flex-col justify-between p-8 bg-cover bg-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <div class="relative z-10 pt-12 space-y-6 max-w-xs">
+                <h3 class="font-script text-4xl text-sandText">Love Story</h3>
+
+                <div class="space-y-4 text-xs text-sandText/90 leading-relaxed font-light">
+                    <p>
+                        <strong class="font-semibold text-white">Pertemuan</strong> - Kami percaya, setiap pertemuan adalah bagian dari takdir. Melalui perantara teman maupun keluarga, kami dipertemukan. Siapa sangka, perkenalan sederhana itu menjadi awal dari kisah cinta kami.
+                    </p>
+                    <p>
+                        <strong class="font-semibold text-white">Pertunangan</strong> - Atas izin Allah, niat baik kami akhirnya berlanjut pada sebuah acara lamaran yang penuh doa dan kebahagiaan.
+                    </p>
+                    <p>
+                        <strong class="font-semibold text-white">Menuju Pernikahan</strong> - Pada 06 Maret 2027, kami akan mengikrarkan janji suci pernikahan. Percayalah, bukan karena bertemu lalu berjodoh, melainkan karena berjodohlah maka kami dipertemukan.
+                    </p>
+                </div>
+            </div>
+            <div></div>
+        </section>
+
+        <!-- SECTION 6: COUNTDOWN & EVENT DETAILS -->
+        <section class="relative min-h-screen flex flex-col justify-around p-8 bg-cover bg-center text-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-2867039c-dfc9-4b59-b5e9-d4f4b5b74469.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <!-- Countdown Block -->
+            <div class="relative z-10 space-y-6 pt-8">
+                <h3 class="font-script text-4xl text-sandText">Countdown Time</h3>
+
+                <!-- Ticker -->
+                <div class="grid grid-cols-4 gap-3 max-w-xs mx-auto">
+                    <div>
+                        <span id="days" class="font-serif text-3xl font-bold text-white">0</span>
+                        <span class="block text-[10px] text-sandText uppercase">Hari</span>
+                    </div>
+                    <div>
+                        <span id="hours" class="font-serif text-3xl font-bold text-white">0</span>
+                        <span class="block text-[10px] text-sandText uppercase">Jam</span>
+                    </div>
+                    <div>
+                        <span id="minutes" class="font-serif text-3xl font-bold text-white">0</span>
+                        <span class="block text-[10px] text-sandText uppercase">Menit</span>
+                    </div>
+                    <div>
+                        <span id="seconds" class="font-serif text-3xl font-bold text-white">0</span>
+                        <span class="block text-[10px] text-sandText uppercase">Detik</span>
+                    </div>
+                </div>
+
+                <a href="https://calendar.google.com" target="_blank" class="inline-block px-5 py-2 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs tracking-wider uppercase hover:bg-white/30 transition-all">
+                    Simpan dikalender
+                </a>
+            </div>
+
+            <!-- Event Details Block (Hanya Akad & Resepsi) -->
+            <div class="relative z-10 space-y-8 py-8 border-t border-white/10 mt-8">
+                
+                <!-- Akad Nikah -->
+                <div class="space-y-2">
+                    <h3 class="font-serif text-3xl font-bold text-white">Akad Nikah</h3>
+                    <p class="text-xs text-sandText">Sabtu, 06 Maret 2027</p>
+                    <p class="text-xs text-sandText">09.00 WIB - Selesai</p>
+                    
+                    <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
+                        <i class="fa-solid fa-location-dot mb-1 block text-base text-accentGold"></i>
+                        <strong class="not-italic text-white font-semibold">KEDIAMAN MEMPELAI WANITA</strong><br>
+                        Dusun Nusasireum, RT 031/ RW 010, Des Cibeureum, Kec Sukamantri, Kab Ciamis, Jawa Barat
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://maps.google.com" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                            Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resepsi -->
+                <div class="space-y-2 pt-4">
+                    <h3 class="font-serif text-3xl font-bold text-white">Resepsi</h3>
+                    <p class="text-xs text-sandText">Sabtu, 06 Maret 2027</p>
+                    <p class="text-xs text-sandText">10.00 WIB - Selesai</p>
+                    
+                    <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
+                        <i class="fa-solid fa-location-dot mb-1 block text-base text-accentGold"></i>
+                        <strong class="not-italic text-white font-semibold">KEDIAMAN MEMPELAI WANITA</strong><br>
+                        Dusun Babakan, RT 04/ RW 03, Des Sadewata, Kec Lumbung, Kab Ciamis, Jawa Barat
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://maps.google.com" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                            Google Maps
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 7: WEDDING GIFT (Foto Latar Penuh Pasangan) -->
+        <section class="relative min-h-[90vh] flex flex-col justify-center items-center p-8 bg-cover bg-center text-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-74bd3e7d-8fa9-45f4-84a4-611908b5b18b.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <div class="relative z-10 space-y-4 max-w-xs mx-auto">
+                <h3 class="font-script text-4xl text-sandText">Wedding Gift</h3>
+                <p class="text-xs text-sandText/90 leading-relaxed font-light">
+                    Tanpa mengurangi rasa hormat kami bagi tamu yang ingin mengirimkan hadiah kepada kedua mempelai dapat mengirimkannya melalui :
+                </p>
+                
+                <button onclick="openGiftModal()" class="inline-block px-6 py-2.5 rounded bg-white/20 backdrop-blur-md border border-white/40 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/30 transition-all">
+                    Klik di sini
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 8: GUEST BOOK & WISHES (Foto Latar Penuh Pasangan) -->
+        <section class="relative min-h-screen flex flex-col justify-center p-8 bg-cover bg-center text-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <div class="relative z-10 space-y-6 max-w-xs mx-auto w-full py-12">
+                <h3 class="font-script text-4xl text-sandText">Wedding Wish</h3>
+                <p class="text-xs text-sandText/80 font-light">Tuliskan Do'a dan Ucapan terbaik untuk kami</p>
+
+                <!-- Form -->
+                <form onsubmit="saveWish(event)" class="space-y-3 text-left glass-studio p-4 rounded-xl">
+                    <div>
+                        <input type="text" id="inputName" required placeholder="Nama" class="w-full p-2.5 rounded bg-white/10 border border-white/20 text-xs text-white placeholder-sandText/50 focus:outline-none focus:border-accentGold">
+                    </div>
+                    <div>
+                        <textarea id="inputWish" rows="3" required placeholder="Ucapan" class="w-full p-2.5 rounded bg-white/10 border border-white/20 text-xs text-white placeholder-sandText/50 focus:outline-none focus:border-accentGold"></textarea>
+                    </div>
+                    <button type="submit" class="px-5 py-2 rounded bg-white/20 hover:bg-white/30 text-white font-medium text-xs tracking-wider transition-all border border-white/30">
+                        Kirim
+                    </button>
+                </form>
+
+                <!-- Wishes List Display -->
+                <div id="wishesContainer" class="space-y-3 text-left max-h-72 overflow-y-auto pt-2">
+                    <!-- Dynamically loaded -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: TERIMA KASIH (Foto Latar Penuh Pasangan) -->
+        <section class="relative min-h-screen flex flex-col justify-center items-center p-8 bg-cover bg-center text-center"
+                 style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
+            <div class="absolute inset-0 photo-overlay"></div>
+
+            <div class="relative z-10 space-y-4 max-w-xs mx-auto">
+                <h3 class="font-script text-4xl text-sandText">Terima Kasih</h3>
+                <p class="text-xs text-sandText/90 leading-relaxed font-light">
+                    Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
+                </p>
+                <h2 class="font-serif text-3xl font-bold text-white tracking-wide pt-4">
+                    Ndit & Gery
+                </h2>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL POPUP WEDDING GIFT -->
+    <div id="giftModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-studio p-6 rounded-2xl max-w-xs w-full text-center space-y-4 relative">
+            <button onclick="closeGiftModal()" class="absolute top-3 right-3 text-white/70 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h4 class="font-serif text-xl font-bold text-white">Transfer Bank</h4>
+            
+            <div class="space-y-3">
+                <div class="bg-white/10 p-3 rounded-lg text-left">
+                    <p class="text-xs font-bold text-white">BCA</p>
+                    <p id="rekBCA" class="font-mono text-sm text-sandText">1234567890</p>
+                    <p class="text-[10px] text-sandText/70">a.n. Indriyani</p>
+                    <button onclick="copyText('rekBCA')" class="mt-2 text-[10px] px-3 py-1 bg-white/20 rounded text-white border border-white/20">Salin Rekening</button>
+                </div>
+                <div class="bg-white/10 p-3 rounded-lg text-left">
+                    <p class="text-xs font-bold text-white">MANDIRI</p>
+                    <p id="rekMandiri" class="font-mono text-sm text-sandText">0987654321</p>
+                    <p class="text-[10px] text-sandText/70">a.n. Gery Mardiana</p>
+                    <button onclick="copyText('rekMandiri')" class="mt-2 text-[10px] px-3 py-1 bg-white/20 rounded text-white border border-white/20">Salin Rekening</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Feedback Box -->
+    <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-white/90 text-studioBg px-5 py-2.5 rounded-full text-xs font-semibold shadow-2xl opacity-0 pointer-events-none transition-all duration-300">
+        Tersalin!
+    </div>
+
+    <script>
+        // Parse Guest Name from URL parameter (?to=Nama)
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const guest = params.get('to') || params.get('n');
+            if (guest) {
+                document.getElementById('guestNameDisplay').textContent = guest;
+            }
+            startCountdown();
+            renderWishes();
+        });
+
+        // Open Invitation Flow
+        function openInvitation() {
+            const overlay = document.getElementById('coverOverlay');
+            const mainContent = document.getElementById('mainContent');
+            const audio = document.getElementById('bgAudio');
+
+            overlay.classList.add('-translate-y-full', 'opacity-0');
+            document.body.classList.remove('locked');
+
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                mainContent.classList.remove('opacity-0');
+            }, 800);
+
+            audio.play().catch(() => console.log('Autoplay prevented by browser'));
+        }
+
+        // Toggle Audio
+        let isPlaying = true;
+        function toggleAudio() {
+            const audio = document.getElementById('bgAudio');
+            const icon = document.getElementById('musicIcon');
+            if (isPlaying) {
+                audio.pause();
+                icon.classList.remove('animate-spin-slow');
+                icon.classList.replace('fa-music', 'fa-volume-xmark');
+            } else {
+                audio.play();
+                icon.classList.add('animate-spin-slow');
+                icon.classList.replace('fa-volume-xmark', 'fa-music');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Countdown Timer Logic
+        function startCountdown() {
+            const targetDate = new Date('March 6, 2027 09:00:00').getTime();
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) return;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            }, 1000);
+        }
+
+        // Modal Gift
+        function openGiftModal() {
+            const modal = document.getElementById('giftModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeGiftModal() {
+            const modal = document.getElementById('giftModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Copy Account
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            const temp = document.createElement('input');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast('Nomor rekening berhasil disalin!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // RSVP / Wishes handling
+        const initialWishes = [
+            { name: "Siti Rahmawati", wish: "Selamat Indri & Gery! Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin." },
+            { name: "Budi Santoso", wish: "Selamat menempuh hidup baru sahabatku! Turut bahagia." }
+        ];
+
+        function renderWishes() {
+            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_sherly')) || initialWishes;
+            const container = document.getElementById('wishesContainer');
+            container.innerHTML = '';
+
+            wishes.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-studio p-3 rounded-lg text-xs space-y-1';
+                card.innerHTML = `
+                    <strong class="text-white block">${item.name}</strong>
+                    <p class="text-sandText/80 font-light">${item.wish}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function saveWish(e) {
+            e.preventDefault();
+            const name = document.getElementById('inputName').value.trim();
+            const wish = document.getElementById('inputWish').value.trim();
+
+            if (!name || !wish) return;
+
+            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_sherly')) || initialWishes;
+            wishes.unshift({ name, wish });
+
+            localStorage.setItem('wedding_wishes_sherly', JSON.stringify(wishes));
+            renderWishes();
+
+            document.getElementById('inputName').value = '';
+            document.getElementById('inputWish').value = '';
+            showToast('Ucapan berhasil dikirim!');
+        }
+    </script>
+</body>
+</html>
