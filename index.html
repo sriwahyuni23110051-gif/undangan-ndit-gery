@@ -56,6 +56,13 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        /* Memastikan semua section latar foto tampil FULL COVER & terpusat sempurna */
+        .bg-full-cover {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+        }
+
         .photo-overlay {
             background: linear-gradient(to bottom, rgba(30, 28, 27, 0.45) 0%, rgba(20, 19, 18, 0.75) 100%);
         }
@@ -96,7 +103,7 @@
 
     <!-- 1. FULLSCREEN COVER OVERLAY -->
     <div id="coverOverlay" class="fixed inset-0 z-50 flex items-center justify-center transition-all duration-1000 ease-in-out bg-studioBg">
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+        <div class="absolute inset-0 bg-full-cover" 
              style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-74bd3e7d-8fa9-45f4-84a4-611908b5b18b.jpg');">
         </div>
         <div class="absolute inset-0 photo-overlay"></div>
@@ -139,7 +146,7 @@
     <main id="mainContent" class="opacity-0 transition-opacity duration-1000 max-w-md mx-auto relative bg-studioBg min-h-screen shadow-2xl overflow-hidden">
 
         <!-- SECTION 1: HERO COVER -->
-        <section class="relative h-screen flex flex-col justify-between text-center p-8 bg-cover bg-center"
+        <section class="relative h-screen flex flex-col justify-between text-center p-8 bg-full-cover"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-ff838649-42db-45c7-9b4b-ebb86f7bdd53.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -157,7 +164,7 @@
         </section>
 
         <!-- SECTION 2: QURAN VERSE -->
-        <section class="relative min-h-[80vh] flex flex-col justify-center items-center text-center p-8 bg-cover bg-center"
+        <section class="relative min-h-[80vh] flex flex-col justify-center items-center text-center p-8 bg-full-cover"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
             <div class="absolute inset-0 photo-overlay-radial"></div>
 
@@ -172,7 +179,7 @@
         </section>
 
         <!-- SECTION 3: THE BRIDE -->
-        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-cover bg-center"
+        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-full-cover"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-597ae051-8546-419a-aceb-d2cae8da5a59.jpg');">
             <div class="absolute inset-0 photo-overlay-top"></div>
 
@@ -186,16 +193,16 @@
                     Bapak Dodi & Ibu Maya Sari
                 </p>
                 <div class="pt-2">
-                    <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                    <a href="https://instagram.com/indriyaniii_14" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
                         <i class="fa-brands fa-instagram"></i>
-                        <span>indriyanii_14</span>
+                        <span>indriyaniii_14</span>
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 4: THE GROOM -->
-        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-cover bg-center"
+        <section class="relative min-h-[90vh] flex flex-col justify-end p-8 bg-full-cover"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-71e183ed-b1b7-4118-9204-54b614508210.jpg');">
             <div class="absolute inset-0 photo-overlay-top"></div>
 
@@ -209,7 +216,7 @@
                     Bapak Ujang & Ibu Sari
                 </p>
                 <div class="pt-2">
-                    <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                    <a href="https://instagram.com/grymardiana_" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
                         <i class="fa-brands fa-instagram"></i>
                         <span>grymardiana_</span>
                     </a>
@@ -218,7 +225,7 @@
         </section>
 
         <!-- SECTION 5: LOVE STORY -->
-        <section class="relative min-h-[90vh] flex flex-col justify-between p-8 bg-cover bg-center"
+        <section class="relative min-h-[90vh] flex flex-col justify-between p-8 bg-full-cover"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -241,7 +248,7 @@
         </section>
 
         <!-- SECTION 6: COUNTDOWN & EVENT DETAILS -->
-        <section class="relative min-h-screen flex flex-col justify-around p-8 bg-cover bg-center text-center"
+        <section class="relative min-h-screen flex flex-col justify-around p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-2867039c-dfc9-4b59-b5e9-d4f4b5b74469.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -290,7 +297,7 @@
                     </div>
 
                     <div class="pt-2">
-                        <a href="https://maps.google.com" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
                             Google Maps
                         </a>
                     </div>
@@ -309,7 +316,7 @@
                     </div>
 
                     <div class="pt-2">
-                        <a href="https://maps.google.com" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
                             Google Maps
                         </a>
                     </div>
@@ -319,7 +326,7 @@
         </section>
 
         <!-- SECTION 7: WEDDING GIFT (Foto Latar Penuh Pasangan) -->
-        <section class="relative min-h-[90vh] flex flex-col justify-center items-center p-8 bg-cover bg-center text-center"
+        <section class="relative min-h-[90vh] flex flex-col justify-center items-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-74bd3e7d-8fa9-45f4-84a4-611908b5b18b.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -336,7 +343,7 @@
         </section>
 
         <!-- SECTION 8: GUEST BOOK & WISHES (Foto Latar Penuh Pasangan) -->
-        <section class="relative min-h-screen flex flex-col justify-center p-8 bg-cover bg-center text-center"
+        <section class="relative min-h-screen flex flex-col justify-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -365,7 +372,7 @@
         </section>
 
         <!-- SECTION 9: TERIMA KASIH (Foto Latar Penuh Pasangan) -->
-        <section class="relative min-h-screen flex flex-col justify-center items-center p-8 bg-cover bg-center text-center"
+        <section class="relative min-h-screen flex flex-col justify-center items-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
@@ -413,6 +420,9 @@
     </div>
 
     <script>
+        // Key Penyimpanan localStorage terpusat
+        const STORAGE_KEY = 'wedding_wishes_indri_gery';
+
         // Parse Guest Name from URL parameter (?to=Nama)
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
@@ -458,9 +468,9 @@
             isPlaying = !isPlaying;
         }
 
-        // Countdown Timer Logic
+        // Countdown Timer Logic (Diperbaiki presisi ke 13 Maret 2027)
         function startCountdown() {
-            const targetDate = new Date('March 6, 2027 09:00:00').getTime();
+            const targetDate = new Date('March 13, 2027 09:00:00').getTime();
 
             setInterval(() => {
                 const now = new Date().getTime();
@@ -519,7 +529,7 @@
         ];
 
         function renderWishes() {
-            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_ndit')) || initialWishes;
+            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || initialWishes;
             const container = document.getElementById('wishesContainer');
             container.innerHTML = '';
 
@@ -541,10 +551,10 @@
 
             if (!name || !wish) return;
 
-            const wishes = JSON.parse(localStorage.getItem('wedding_wishes_sherly')) || initialWishes;
+            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || initialWishes;
             wishes.unshift({ name, wish });
 
-            localStorage.setItem('wedding_wishes_ndit', JSON.stringify(wishes));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
             renderWishes();
 
             document.getElementById('inputName').value = '';
