@@ -16,6 +16,10 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -75,9 +79,16 @@
             background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%);
         }
 
-        /* Frosted Glass UI Card */
-        .glass-studio {
-            background: rgba(45, 41, 39, 0.65);
+        /* Frosted Glass UI Card Tipis Sesuai Gambar */
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-modal {
+            background: rgba(45, 41, 39, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(230, 225, 220, 0.15);
@@ -126,7 +137,7 @@
                     </h3>
                 </div>
 
-                <button onclick="openInvitation()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white text-xs tracking-wider uppercase font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button onclick="openInvitation()" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md glass-btn text-white text-xs tracking-wider uppercase font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
                     <i class="fa-regular fa-envelope text-sm"></i>
                     Open Invitation
                 </button>
@@ -150,7 +161,7 @@
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-ff838649-42db-45c7-9b4b-ebb86f7bdd53.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
-            <div class="relative z-10 pt-16 space-y-3">
+            <div class="relative z-10 pt-16 space-y-3" data-aos="fade-up" data-aos-duration="1200">
                 <p class="font-script text-3xl text-sandText">The Wedding of</p>
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white tracking-wide">
                     Ndit & Gery
@@ -168,7 +179,7 @@
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
             <div class="absolute inset-0 photo-overlay-radial"></div>
 
-            <div class="relative z-10 space-y-6 max-w-xs mx-auto">
+            <div class="relative z-10 space-y-6 max-w-xs mx-auto" data-aos="fade-up" data-aos-duration="1200">
                 <p class="text-xs sm:text-sm text-sandText leading-relaxed font-light tracking-wide italic">
                     "Dan diantara ayat-ayat-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu merasa nyaman kepadanya, dan dijadikan-Nya di antaramu mawadah dan rahmah. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir."
                 </p>
@@ -183,7 +194,7 @@
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-597ae051-8546-419a-aceb-d2cae8da5a59.jpg');">
             <div class="absolute inset-0 photo-overlay-top"></div>
 
-            <div class="relative z-10 space-y-3 mb-8">
+            <div class="relative z-10 space-y-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
                 <p class="font-script text-3xl text-sandText">The Bride</p>
                 <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-wide">
                     Indriyani
@@ -193,7 +204,7 @@
                     Bapak Dodi & Ibu Maya Sari
                 </p>
                 <div class="pt-2">
-                    <a href="https://instagram.com/indriyaniii_14" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                    <a href="https://instagram.com/indriyaniii_14" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded glass-btn text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
                         <i class="fa-brands fa-instagram"></i>
                         <span>indriyaniii_14</span>
                     </a>
@@ -206,7 +217,7 @@
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-71e183ed-b1b7-4118-9204-54b614508210.jpg');">
             <div class="absolute inset-0 photo-overlay-top"></div>
 
-            <div class="relative z-10 space-y-3 mb-8">
+            <div class="relative z-10 space-y-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
                 <p class="font-script text-3xl text-sandText">The Groom</p>
                 <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-wide">
                     Gery Mardiana
@@ -216,7 +227,7 @@
                     Bapak Ujang & Ibu Sari
                 </p>
                 <div class="pt-2">
-                    <a href="https://instagram.com/grymardiana_" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
+                    <a href="https://instagram.com/grymardiana_" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded glass-btn text-white text-[11px] tracking-wider hover:bg-white/30 transition-all">
                         <i class="fa-brands fa-instagram"></i>
                         <span>grymardiana_</span>
                     </a>
@@ -229,7 +240,7 @@
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
-            <div class="relative z-10 pt-12 space-y-6 max-w-xs">
+            <div class="relative z-10 pt-12 space-y-6 max-w-xs" data-aos="fade-up" data-aos-duration="1200">
                 <h3 class="font-script text-4xl text-sandText">Love Story</h3>
 
                 <div class="space-y-4 text-xs text-sandText/90 leading-relaxed font-light">
@@ -247,76 +258,93 @@
             <div></div>
         </section>
 
-        <!-- SECTION 6: COUNTDOWN & EVENT DETAILS -->
+        <!-- SECTION 6: COUNTDOWN & EVENT DETAILS (SESUAI GAMBAR CONTOH) -->
         <section class="relative min-h-screen flex flex-col justify-around p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-2867039c-dfc9-4b59-b5e9-d4f4b5b74469.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
             <!-- Countdown Block -->
-            <div class="relative z-10 space-y-6 pt-8">
+            <div class="relative z-10 space-y-6 pt-12" data-aos="fade-up" data-aos-duration="1200">
                 <h3 class="font-script text-4xl text-sandText">Countdown Time</h3>
 
-                <!-- Ticker -->
-                <div class="grid grid-cols-4 gap-3 max-w-xs mx-auto">
+                <!-- Ticker Sesuai Gambar Contoh -->
+                <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto">
                     <div>
-                        <span id="days" class="font-serif text-3xl font-bold text-white">0</span>
-                        <span class="block text-[10px] text-sandText uppercase">Hari</span>
+                        <span id="days" class="font-serif text-3xl font-normal text-white">0</span>
+                        <span class="block text-[11px] text-sandText/80 font-light mt-1">Hari</span>
                     </div>
                     <div>
-                        <span id="hours" class="font-serif text-3xl font-bold text-white">0</span>
-                        <span class="block text-[10px] text-sandText uppercase">Jam</span>
+                        <span id="hours" class="font-serif text-3xl font-normal text-white">0</span>
+                        <span class="block text-[11px] text-sandText/80 font-light mt-1">Jam</span>
                     </div>
                     <div>
-                        <span id="minutes" class="font-serif text-3xl font-bold text-white">0</span>
-                        <span class="block text-[10px] text-sandText uppercase">Menit</span>
+                        <span id="minutes" class="font-serif text-3xl font-normal text-white">0</span>
+                        <span class="block text-[11px] text-sandText/80 font-light mt-1">Menit</span>
                     </div>
                     <div>
-                        <span id="seconds" class="font-serif text-3xl font-bold text-white">0</span>
-                        <span class="block text-[10px] text-sandText uppercase">Detik</span>
+                        <span id="seconds" class="font-serif text-3xl font-normal text-white">0</span>
+                        <span class="block text-[11px] text-sandText/80 font-light mt-1">Detik</span>
                     </div>
                 </div>
 
-                <a href="https://calendar.google.com" target="_blank" class="inline-block px-5 py-2 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs tracking-wider uppercase hover:bg-white/30 transition-all">
-                    Simpan dikalender
-                </a>
+                <div class="pt-2">
+                    <a href="https://calendar.google.com" target="_blank" class="inline-block px-5 py-2 rounded glass-btn text-white text-xs tracking-wider font-light hover:bg-white/30 transition-all">
+                        Simpan dikalender
+                    </a>
+                </div>
             </div>
 
-            <!-- Event Details Block (Hanya Akad & Resepsi) -->
-            <div class="relative z-10 space-y-8 py-8 border-t border-white/10 mt-8">
+            <!-- Event Details Block (Desain Bersih Sesuai Gambar Contoh) -->
+            <div class="relative z-10 space-y-12 py-12 mt-8">
                 
-                <!-- Akad Nikah -->
-                <div class="space-y-2">
-                    <h3 class="font-serif text-3xl font-bold text-white">Akad Nikah</h3>
-                    <p class="text-xs text-sandText">Sabtu, 13 Maret 2027</p>
-                    <p class="text-xs text-sandText">09.00 WIB - Selesai</p>
+                <!-- Akad Nikah (Ikon Cincin Nikah) -->
+                <div class="space-y-3" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="w-12 h-12 mx-auto flex items-center justify-center">
+                        <!-- SVG Cincin Nikah Tipis Pas Sesuai Gambar -->
+                        <svg class="w-10 h-10 text-white stroke-current" fill="none" stroke-width="1.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5l1.5-2.25h-3L12 4.5zM7.5 12a4.5 4.5 0 109 0 4.5 4.5 0 00-9 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 12a3.5 3.5 0 107 0 3.5 3.5 0 00-7 0z" />
+                        </svg>
+                    </div>
                     
-                    <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
-                        <i class="fa-solid fa-location-dot mb-1 block text-base text-accentGold"></i>
-                        <strong class="not-italic text-white font-semibold">KEDIAMAN MEMPELAI WANITA</strong><br>
+                    <h3 class="font-serif text-3xl font-normal text-white">Akad Nikah</h3>
+                    <p class="text-xs text-sandText/90">Sabtu, 13 Maret 2027</p>
+                    <p class="text-xs text-sandText/90">09.00 WIB - Selesai</p>
+                    
+                    <div class="pt-3 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto font-light">
+                        <i class="fa-solid fa-location-dot mb-2 block text-sm text-sandText"></i>
+                        <strong class="text-white font-semibold uppercase tracking-wider block mb-1">KEDIAMAN MEMPELAI WANITA</strong>
                         Dusun Nusasireum, RT 031/ RW 010, Des Cibeureum, Kec Sukamantri, Kab Ciamis, Jawa Barat
                     </div>
 
                     <div class="pt-2">
-                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-5 py-2 rounded glass-btn text-white text-xs tracking-wider font-light hover:bg-white/30 transition-all">
                             Google Maps
                         </a>
                     </div>
                 </div>
 
-                <!-- Resepsi -->
-                <div class="space-y-2 pt-4">
-                    <h3 class="font-serif text-3xl font-bold text-white">Resepsi</h3>
-                    <p class="text-xs text-sandText">Sabtu, 13 Maret 2027</p>
-                    <p class="text-xs text-sandText">10.00 WIB - Selesai</p>
+                <!-- Resepsi (Ikon Gelas Toast) -->
+                <div class="space-y-3 pt-6" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="w-12 h-12 mx-auto flex items-center justify-center">
+                        <!-- SVG Gelas Toast Tipis Pas Sesuai Gambar -->
+                        <svg class="w-9 h-9 text-white stroke-current" fill="none" stroke-width="1.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8m-4-4v4M5 3l3 8a4 4 0 008 0l3-8H5z" />
+                        </svg>
+                    </div>
+
+                    <h3 class="font-serif text-3xl font-normal text-white">Resepsi</h3>
+                    <p class="text-xs text-sandText/90">Sabtu, 13 Maret 2027</p>
+                    <p class="text-xs text-sandText/90">10.00 WIB - Selesai</p>
                     
-                    <div class="pt-2 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto italic font-light">
-                        <i class="fa-solid fa-location-dot mb-1 block text-base text-accentGold"></i>
-                        <strong class="not-italic text-white font-semibold">KEDIAMAN MEMPELAI WANITA</strong><br>
+                    <div class="pt-3 text-xs text-sandText/90 leading-relaxed max-w-xs mx-auto font-light">
+                        <i class="fa-solid fa-location-dot mb-2 block text-sm text-sandText"></i>
+                        <strong class="text-white font-semibold uppercase tracking-wider block mb-1">KEDIAMAN MEMPELAI WANITA</strong>
                         Dusun Nusasireum, RT 031/ RW 010, Des Cibeureum, Kec Sukamantri, Kab Ciamis, Jawa Barat
                     </div>
 
                     <div class="pt-2">
-                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-4 py-1.5 rounded bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] tracking-wider uppercase hover:bg-white/30 transition-all">
+                        <a href="https://maps.app.goo.gl/FhgZgqXokWacbKQq6" target="_blank" class="inline-block px-5 py-2 rounded glass-btn text-white text-xs tracking-wider font-light hover:bg-white/30 transition-all">
                             Google Maps
                         </a>
                     </div>
@@ -325,41 +353,41 @@
             </div>
         </section>
 
-        <!-- SECTION 7: WEDDING GIFT (Foto Latar Penuh Pasangan) -->
+        <!-- SECTION 7: WEDDING GIFT -->
         <section class="relative min-h-[90vh] flex flex-col justify-center items-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-74bd3e7d-8fa9-45f4-84a4-611908b5b18b.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
-            <div class="relative z-10 space-y-4 max-w-xs mx-auto">
+            <div class="relative z-10 space-y-4 max-w-xs mx-auto" data-aos="fade-up" data-aos-duration="1200">
                 <h3 class="font-script text-4xl text-sandText">Wedding Gift</h3>
                 <p class="text-xs text-sandText/90 leading-relaxed font-light">
                     Tanpa mengurangi rasa hormat kami bagi tamu yang ingin mengirimkan hadiah kepada kedua mempelai dapat mengirimkannya melalui :
                 </p>
                 
-                <button onclick="openGiftModal()" class="inline-block px-6 py-2.5 rounded bg-white/20 backdrop-blur-md border border-white/40 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/30 transition-all">
+                <button onclick="openGiftModal()" class="inline-block px-6 py-2.5 rounded glass-btn text-white text-xs tracking-wider uppercase font-medium hover:bg-white/30 transition-all">
                     Klik di sini
                 </button>
             </div>
         </section>
 
-        <!-- SECTION 8: GUEST BOOK & WISHES (Foto Latar Penuh Pasangan) -->
+        <!-- SECTION 8: GUEST BOOK & WISHES -->
         <section class="relative min-h-screen flex flex-col justify-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-3c982afd-819b-438d-a4cf-fe84532f7bda.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
-            <div class="relative z-10 space-y-6 max-w-xs mx-auto w-full py-12">
+            <div class="relative z-10 space-y-6 max-w-xs mx-auto w-full py-12" data-aos="fade-up" data-aos-duration="1200">
                 <h3 class="font-script text-4xl text-sandText">Wedding Wish</h3>
                 <p class="text-xs text-sandText/80 font-light">Tuliskan Do'a dan Ucapan terbaik untuk kami</p>
 
                 <!-- Form -->
-                <form onsubmit="saveWish(event)" class="space-y-3 text-left glass-studio p-4 rounded-xl">
+                <form onsubmit="saveWish(event)" class="space-y-3 text-left glass-modal p-4 rounded-xl">
                     <div>
                         <input type="text" id="inputName" required placeholder="Nama" class="w-full p-2.5 rounded bg-white/10 border border-white/20 text-xs text-white placeholder-sandText/50 focus:outline-none focus:border-accentGold">
                     </div>
                     <div>
                         <textarea id="inputWish" rows="3" required placeholder="Ucapan" class="w-full p-2.5 rounded bg-white/10 border border-white/20 text-xs text-white placeholder-sandText/50 focus:outline-none focus:border-accentGold"></textarea>
                     </div>
-                    <button type="submit" class="px-5 py-2 rounded bg-white/20 hover:bg-white/30 text-white font-medium text-xs tracking-wider transition-all border border-white/30">
+                    <button type="submit" class="px-5 py-2 rounded glass-btn text-white font-medium text-xs tracking-wider transition-all">
                         Kirim
                     </button>
                 </form>
@@ -371,12 +399,12 @@
             </div>
         </section>
 
-        <!-- SECTION 9: TERIMA KASIH (Foto Latar Penuh Pasangan) -->
+        <!-- SECTION 9: TERIMA KASIH -->
         <section class="relative min-h-screen flex flex-col justify-center items-center p-8 bg-full-cover text-center"
                  style="background-image: url('https://cdn.phototourl.com/free/2026-09-21-977b1418-efe3-4138-87d0-f23b5244aabc.jpg');">
             <div class="absolute inset-0 photo-overlay"></div>
 
-            <div class="relative z-10 space-y-4 max-w-xs mx-auto">
+            <div class="relative z-10 space-y-4 max-w-xs mx-auto" data-aos="fade-up" data-aos-duration="1200">
                 <h3 class="font-script text-4xl text-sandText">Terima Kasih</h3>
                 <p class="text-xs text-sandText/90 leading-relaxed font-light">
                     Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.
@@ -391,20 +419,20 @@
 
     <!-- MODAL POPUP WEDDING GIFT -->
     <div id="giftModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="glass-studio p-6 rounded-2xl max-w-xs w-full text-center space-y-4 relative">
+        <div class="glass-modal p-6 rounded-2xl max-w-xs w-full text-center space-y-4 relative">
             <button onclick="closeGiftModal()" class="absolute top-3 right-3 text-white/70 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <h4 class="font-serif text-xl font-bold text-white">Transfer Bank</h4>
             
             <div class="space-y-3">
-                <div class="bg-white/10 p-3 rounded-lg text-left">
+                <div class="bg-white/10 p-3 rounded-lg text-left border border-white/10">
                     <p class="text-xs font-bold text-white">BCA</p>
                     <p id="rekBCA" class="font-mono text-sm text-sandText">1234567890</p>
                     <p class="text-[10px] text-sandText/70">a.n. Indriyani</p>
                     <button onclick="copyText('rekBCA')" class="mt-2 text-[10px] px-3 py-1 bg-white/20 rounded text-white border border-white/20">Salin Rekening</button>
                 </div>
-                <div class="bg-white/10 p-3 rounded-lg text-left">
+                <div class="bg-white/10 p-3 rounded-lg text-left border border-white/10">
                     <p class="text-xs font-bold text-white">MANDIRI</p>
                     <p id="rekMandiri" class="font-mono text-sm text-sandText">0987654321</p>
                     <p class="text-[10px] text-sandText/70">a.n. Gery Mardiana</p>
@@ -434,7 +462,7 @@
             renderWishes();
         });
 
-        // Open Invitation Flow
+        // Open Invitation Flow dengan Inisialisasi Animasi AOS
         function openInvitation() {
             const overlay = document.getElementById('coverOverlay');
             const mainContent = document.getElementById('mainContent');
@@ -446,7 +474,13 @@
             setTimeout(() => {
                 overlay.style.display = 'none';
                 mainContent.classList.remove('opacity-0');
-            }, 800);
+                
+                // Jalankan Animasi Gerak saat Undangan Dibuka
+                AOS.init({
+                    once: false,
+                    mirror: true
+                });
+            }, 600);
 
             audio.play().catch(() => console.log('Autoplay prevented by browser'));
         }
@@ -468,7 +502,7 @@
             isPlaying = !isPlaying;
         }
 
-        // Countdown Timer Logic (Diperbaiki presisi ke 13 Maret 2027)
+        // Countdown Timer Logic
         function startCountdown() {
             const targetDate = new Date('March 13, 2027 09:00:00').getTime();
 
@@ -535,7 +569,7 @@
 
             wishes.forEach(item => {
                 const card = document.createElement('div');
-                card.className = 'glass-studio p-3 rounded-lg text-xs space-y-1';
+                card.className = 'glass-modal p-3 rounded-lg text-xs space-y-1';
                 card.innerHTML = `
                     <strong class="text-white block">${item.name}</strong>
                     <p class="text-sandText/80 font-light">${item.wish}</p>
